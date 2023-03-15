@@ -14,5 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages.login.index');
 });
+
+
+Route::resource('dataSpp', SppController::class);
+Route::resource('dataKelas', KelasController::class);
+Route::resource('dataSiswa', SiswaController::class);
+Route::resource('dataPetugas', PetugasController::class);
+Route::resource('dataPembayaran', PembayaranController::class);
+Route::resource('dataTunggakan', TunggakanController::class);
