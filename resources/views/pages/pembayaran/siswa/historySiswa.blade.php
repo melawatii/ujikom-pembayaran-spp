@@ -15,18 +15,6 @@
         <div class="row">
             <div class="col-12">
                 <div class="card mb-4">
-                    @if(session()->has('message'))
-                        <div class="mt-4 ms-3 me-3 text-light fw-bold alert alert-success" role="alert">
-                            {{ session('message') }}
-                        </div>
-                    @endif
-                    <div class="card-header pb-0 d-flex justify-content-end">
-                        <div>
-                        @if (auth()->user()->level == 'Admin')
-                            <a href="/generateLaporan" class="btn btn-sm mb-0 me-1 btn-info">Export</a>
-                        @endif
-                        </div>
-                    </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
                             <table class="table align-items-center mt-4 mb-0">
@@ -50,10 +38,10 @@
                                             <td class="text-xs font-weight-bolder opacity-7">
                                                 {{ $row->id_petugas }}
                                             </td>
-                                            <td class="text-xs font-weight-bolder opacity-7" align="center">
+                                            <td class="text-xs font-weight-bolder opacity-7">
                                                 {{ $row->nama }}
                                             </td>
-                                            <td class="text-xs font-weight-bolder opacity-7" align="center">
+                                            <td class="text-xs font-weight-bolder opacity-7">
                                                 {{ substr($row->created_at, 0, 10) }}
                                             </td>
                                             <td class="text-xs font-weight-bolder opacity-7">

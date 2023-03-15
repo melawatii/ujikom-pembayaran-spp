@@ -6,7 +6,7 @@
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
         <div class="container-fluid py-1 px-3">
             <nav aria-label="breadcrumb">
-                <h6 class="font-weight-bolder text-white mt-4 mb-0">Create Data Pembayaran</h6>
+                <h6 class="font-weight-bolder text-white mt-4 mb-0">Tambah Data Tunggakan</h6>
             </nav>
         </div>
     </nav>
@@ -16,13 +16,14 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <form class="forms-sample" method="post" action="{{ route('dataPembayaran.store') }}">
+                        <form class="forms-sample" method="post" action="{{ route('dataTunggakan.update', $tunggakan->id) }}">
                             @csrf
+                            @method('put')
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Petugas</label>
-                                        <input class="form-control" name="id_petugas" id="id_petugas" type="text" value="{{ Auth()->user()->nama_petugas }}" readonly>
+                                        <input class="form-control" name="id_petugas" id="id_petugas" type="text" value="{{ Auth()->user()->nama_petugas }}" value="{{ $tunggakan->id_petugas }}" readonly>
                                         @error('id_petugas')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -33,9 +34,9 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">NISN</label>
-                                        <select class="form-control" name="tunggakan" id="tunggakan" value="{{ old('tunggakan') }}" required autofocus>
-                                            @foreach($id_tunggakan as $siswa)
-                                                <option value="{{$siswa->id}}">{{$siswa->nisn}}</option>
+                                        <select class="form-control" name="nisn" id="nisn" value="{{ old('nisn') }}" value="{{ $tunggakan->nisn }}" required autofocus>
+                                            @foreach($nisn as $siswa)
+                                                <option value="{{$siswa->nisn}}">{{$siswa->nisn}}</option>
                                             @endforeach
                                         </select>
                                         @error('nisn')
@@ -48,12 +49,12 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Nama</label>
-                                        <select class="form-control" name="nama" id="nama" value="{{ old('nama') }}" required autofocus>
+                                        <select class="form-control" name="nama" id="nama" value="{{ old('nisn') }}" value="{{ $tunggakan->nama }}" required>
                                             @foreach($nisn as $siswa)
-                                                <option value="{{$siswa->nisn}}">{{$siswa->nama}}</option>
+                                                <option value="{{$siswa->nama}}">{{$siswa->nama}}</option>
                                             @endforeach
                                         </select>
-                                        @error('nama')
+                                        @error('nisn')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
@@ -63,7 +64,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">SPP</label>
-                                        <select class="form-control" name="id_spp" id="id_spp" value="{{ old('id_spp') }}" required>
+                                        <select class="form-control" name="id_spp" id="id_spp" value="{{ old('id_spp') }}" value="{{ $tunggakan->id_spp }}" required>
                                             @foreach($id_spp as $spp)
                                                 <option value="{{$spp->nominal}}" data-nominal="{{$spp->nominal}}">{{ number_format($spp->nominal) }}</option>
                                             @endforeach
@@ -77,9 +78,9 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="example-text-input" class="form-control-label">Bulan Dibayar</label>
-                                        <input class="form-control" name="bulan_dibayar" id="bulan_dibayar" type="number" placeholder="Masukkan jumlah bulan dibayar ..." value="{{ old('bulan_dibayar') }}" required>
-                                        @error('bulan_dibayar')
+                                        <label for="example-text-input" class="form-control-label">Bulan Tunggakan</label>
+                                        <input class="form-control" name="bulan_tunggakan" id="bulan_tunggakan" type="number" placeholder="Masukkan jumlah bulan tunggakan ..." value="{{ old('bulan_tunggakan') }} value="{{ $tunggakan->bulan_tunggakan }}" required>
+                                        @error('bulan_tunggakan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
@@ -88,9 +89,9 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="example-text-input" class="form-control-label">Jumlah bayar</label>
-                                        <input class="form-control" name="jumlah_bayar" id="jumlah_bayar" type="number" readonly>
-                                        @error('jumlah_bayar')
+                                        <label for="example-text-input" class="form-control-label">Total Tunggakan</label>
+                                        <input class="form-control" name="total_tunggakan" id="total_tunggakan" type="number" value="{{ old('total_tunggakan') }}" value="{{ $tunggakan->total_tunggakan }}" readonly>
+                                        @error('total_tunggakan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
@@ -110,11 +111,11 @@
     </div>
 </main>
 <script>
-    document.querySelector('#bulan_dibayar').addEventListener('input', () => {
+    document.querySelector('#bulan_tunggakan').addEventListener('input', () => {
         const id_spp = parseInt(document.querySelector('#id_spp')[document.querySelector('#id_spp').selectedIndex].dataset.nominal)
-        const bulan_dibayar = parseInt(document.querySelector('#bulan_dibayar').value)
-        const jumlah_bayar = id_spp * bulan_dibayar
-        document.querySelector('#jumlah_bayar').value = jumlah_bayar
+        const bulan_tunggakan = parseInt(document.querySelector('#bulan_tunggakan').value)
+        const total_tunggakan = id_spp * bulan_tunggakan
+        document.querySelector('#total_tunggakan').value = total_tunggakan
     })
 </script>
 @endsection

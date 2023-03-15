@@ -9,7 +9,7 @@ use App\Models\Tunggakan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class TunggakanController extends Controller
+class EntryTunggakanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class TunggakanController extends Controller
     public function index()
     {
         $tunggakan = Tunggakan::all();
-        return view('pages.tunggakan.admin.index', compact('tunggakan'));
+        return view('pages.tunggakan.petugas.index', compact('tunggakan'));
     }
 
     /**
@@ -28,7 +28,7 @@ class TunggakanController extends Controller
         $id_petugas = User::all();
         $nisn = Siswa::all();
         $id_spp = Spp::all();
-        return view('pages.tunggakan.admin.create', compact('id_petugas', 'nisn', 'id_spp'));
+        return view('pages.tunggakan.petugas.create', compact('id_petugas', 'nisn', 'id_spp'));
     }
 
     /**
@@ -36,15 +36,6 @@ class TunggakanController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'id_petugas' =>'required',
-            'nisn' =>'required',
-            'nama' =>'required',
-            'id_spp' =>'required',
-            'bulan_tunggakan' =>'required|max:255',
-            'total_tunggakan' =>'required|max:255',
-        ]);
-
         $tunggakan = new Tunggakan;
         $tunggakan->id_petugas = $request->id_petugas;
         $tunggakan->nisn = $request->nisn;
@@ -60,14 +51,14 @@ class TunggakanController extends Controller
 
         $tunggakan->save();
 
-        return redirect()->route('dataTunggakan.index')
+        return redirect()->route('entryTunggakan.index')
         ->with('message', 'Data berhasil ditambahkan!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Tunggakan $tunggakan)
+    public function show(string $id)
     {
         //
     }
@@ -75,57 +66,32 @@ class TunggakanController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit(string $id)
     {
         $tunggakan = Tunggakan::find($id);
         $id_petugas = User::all();
         $nisn = Siswa::all();
         $id_spp = Spp::all();
-        return view('pages.tunggakan.admin.edit', compact('tunggakan', 'id_petugas', 'nisn', 'id_spp'));
+        return view('pages.tunggakan.petugas.edit', compact('tunggakan', 'id_petugas', 'nisn', 'id_spp'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, string $id)
     {
-        $request->validate([
-            'id_petugas' =>'required',
-            'nisn' =>'required',
-            'nama' =>'required',
-            'id_spp' =>'required',
-            'bulan_tunggakan' =>'required|max:255',
-            'total_tunggakan' =>'required|max:255',
-        ]);
-
-        $tunggakan = Tunggakan::find($id);
-        $tunggakan->id_petugas = $request->id_petugas;
-        $tunggakan->nisn = $request->nisn;
-        $tunggakan->nama = $request->nama;
-        $tunggakan->id_spp = $request->id_spp;
-        $tunggakan->bulan_tunggakan = $request->bulan_tunggakan;
-
-        $tunggakan->total_tunggakan = $tunggakan->id_spp * $tunggakan->bulan_tunggakan;
-        $request->total_tunggakan = $tunggakan->total_tunggakan;
-
-        $tunggakan->sisa_bulan = $request->bulan_tunggakan;
-        $tunggakan->sisa_tunggakan = $request->total_tunggakan;
-
-        $tunggakan->save();
-
-        return redirect()->route('dataTunggakan.index')
-        ->with('message', 'Data berhasil diubah!');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(string $id)
     {
         $tunggakan = Tunggakan::find($id);
         $tunggakan->delete();
 
-        return redirect()->route('dataTunggakan.index')
+        return redirect()->route('entryTunggakan.index')
         ->with('message', 'Data berhasil dihapus!');
     }
 }

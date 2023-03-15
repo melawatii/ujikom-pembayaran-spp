@@ -10,7 +10,7 @@ use App\Models\Pembayaran;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class PembayaranController extends Controller
+class EntryPembayaranController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +18,7 @@ class PembayaranController extends Controller
     public function index()
     {
         $pembayaran = Pembayaran::all();
-        return view('pages.pembayaran.admin.index', compact('pembayaran'));
+        return view('pages.pembayaran.petugas.index', compact('pembayaran'));
     }
 
     /**
@@ -30,7 +30,7 @@ class PembayaranController extends Controller
         $id_petugas = User::all();
         $id_tunggakan = Tunggakan::all();
         $id_spp = Spp::all();
-        return view('pages.pembayaran.admin.create', compact('id_tunggakan', 'nisn', 'id_petugas', 'id_spp'));
+        return view('pages.pembayaran.petugas.create', compact('id_tunggakan', 'nisn', 'id_petugas', 'id_spp'));
     }
 
     /**
@@ -67,7 +67,7 @@ class PembayaranController extends Controller
 
             Pembayaran::create($validatedData);
 
-            return redirect()->route('dataPembayaran.index')
+            return redirect()->route('entryPembayaran.index')
             ->with('message', 'Data berhasil ditambahkan!');
         }
     }
@@ -75,7 +75,7 @@ class PembayaranController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Pembayaran $pembayaran)
+    public function show(string $id)
     {
         //
     }
@@ -83,7 +83,7 @@ class PembayaranController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit(string $id)
     {
         //
     }
@@ -91,19 +91,45 @@ class PembayaranController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'id_petugas' =>'required',
+            'nisn' =>'required',
+            'nama' =>'required',
+            'id_spp' =>'required',
+            'bulan_tunggakan' =>'required|max:255',
+            'total_tunggakan' =>'required|max:255',
+        ]);
+
+        $tunggakan = Tunggakan::find($id);
+        $tunggakan->id_petugas = $request->id_petugas;
+        $tunggakan->nisn = $request->nisn;
+        $tunggakan->nama = $request->nama;
+        $tunggakan->id_spp = $request->id_spp;
+        $tunggakan->bulan_tunggakan = $request->bulan_tunggakan;
+
+        $tunggakan->total_tunggakan = $tunggakan->id_spp * $tunggakan->bulan_tunggakan;
+        $request->total_tunggakan = $tunggakan->total_tunggakan;
+
+        $tunggakan->sisa_bulan = $request->bulan_tunggakan;
+        $tunggakan->sisa_tunggakan = $request->total_tunggakan;
+
+        $tunggakan->save();
+
+        return redirect()->route('entryPembayaran.index')
+        ->with('message', 'Data berhasil diubah!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(string $id)
     {
         $pembayaran = Pembayaran::find($id);
         $pembayaran->delete();
-        return redirect()->route('dataPembayaran.index')
+
+        return redirect()->route('entryPembayaran.index')
         ->with('message', 'Data berhasil dihapus!');
     }
 
