@@ -15,6 +15,11 @@
         <div class="row">
             <div class="col-12">
                 <div class="card mb-4">
+                    @if(session()->has('message'))
+                        <div class="mt-4 ms-3 me-3 text-light fw-bold alert alert-success" role="alert">
+                            {{ session('message') }}
+                        </div>
+                    @endif
                     <div class="card-header pb-0">
                         <a href="{{ route('dataSiswa.create') }}">
                             <button class="btn btn-success d-flex justify-content-end btn-sm ms-auto">Tambah</button>
