@@ -17,7 +17,7 @@
           <div class="card mb-4">
             <div class="card-header pb-0">
                 <a href="{{ route('dataPetugas.create') }}">
-                    <button class="btn btn-success d-flex justify-content-end btn-sm ms-auto">Create</button>
+                    <button class="btn btn-success d-flex justify-content-end btn-sm ms-auto">Tambah</button>
                 </a>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
@@ -54,7 +54,7 @@
                                 <form action="{{ route('dataPetugas.destroy', $row->id) }}" method="post">
                                     @csrf
                                     @method('delete')
-                                    <button class="btn btn-danger btn-sm ms-auto">Delete</button>
+                                    <button class="btn btn-danger btn-sm ms-auto" onclick="return confirm('Apakah Anda yakin?')">Delete</button>
                                 </form>
                             </td>
                         </tr>
