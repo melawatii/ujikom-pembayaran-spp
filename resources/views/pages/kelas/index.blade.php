@@ -6,7 +6,7 @@
   <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
     <div class="container-fluid py-1 px-3">
       <nav aria-label="breadcrumb">
-        <h6 class="font-weight-bolder text-white mt-4 mb-0">Data SPP</h6>
+        <h6 class="font-weight-bolder text-white mt-4 mb-0">Data Kelas</h6>
       </nav>
     </div>
   </nav>
@@ -22,7 +22,7 @@
           @endif
           <div class="card-header pb-0 d-flex justify-content-end">
             <div>
-              <a href="/dataSpp/create" class="btn btn-sm mb-0 me-1 btn-success">Tambah</a>
+              <a href="/dataKelas/create" class="btn btn-sm mb-0 me-1 btn-success">Tambah</a>
             </div>
           </div>
           <div class="card-body px-0 pt-0 pb-2">
@@ -31,26 +31,26 @@
                 <thead>
                   <tr>
                     <th class="text-uppercase text-xs font-weight-bolder opacity-9">No</th>
-                    <th class="text-uppercase text-xs font-weight-bolder opacity-9">Tahun</th>
-                    <th class="text-uppercase text-xs font-weight-bolder opacity-9">Nominal</th>
+                    <th class="text-uppercase text-xs font-weight-bolder opacity-9">Nama Kelas</th>
+                    <th class="text-uppercase text-xs font-weight-bolder opacity-9">Kompetensi Keahlian</th>
                     <th class="text-uppercase text-xs font-weight-bolder opacity-9">Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach($spp as $row)
+                  @foreach($kelas as $row)
                     <tr>
                       <td class="text-xs font-weight-bolder opacity-7">
                         {{ $loop->iteration }}
                       </td>
                       <td class="text-xs font-weight-bolder opacity-7">
-                        {{ $row->tahun }}
+                        {{ $row->nama_kelas }}
                       </td>
                       <td class="text-xs font-weight-bolder opacity-7">
-                        Rp {{ number_format($row->nominal) }}
+                        {{ $row->kompetensi_keahlian }}
                       </td>
                       <td class="text-xs font-weight-bolder opacity-7">
-                        <form action="{{ route('dataSpp.destroy',$row->id) }}" method="POST">
-                          <a href="{{ route('dataSpp.edit', $row->id) }}" class="btn btn-sm mb-0 me-1 btn-warning">Edit</a>
+                        <form action="{{ route('dataKelas.destroy',$row->id) }}" method="POST">
+                          <a href="{{ route('dataKelas.edit', $row->id) }}" class="btn btn-sm mb-0 me-1 btn-warning">Edit</a>
                           @csrf
                           @method('DELETE')
                           <button type="submit" onclick="return confirm('Apakah Anda yakin?')" class="btn btn-sm mb-0 me-1 btn-danger">Delete</button>
