@@ -1,4 +1,4 @@
-@extends('dashboard.layout')
+@extends('pages.layout.index')
 
 @section('content')
 <main class="main-content position-relative border-radius-lg ">

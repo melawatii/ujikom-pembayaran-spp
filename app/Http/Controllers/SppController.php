@@ -12,7 +12,8 @@ class SppController extends Controller
      */
     public function index()
     {
-        //
+        $spp = Spp::all();
+        return view('pages.spp.index', compact('spp'));
     }
 
     /**
@@ -20,7 +21,7 @@ class SppController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.spp.create');
     }
 
     /**
@@ -28,7 +29,18 @@ class SppController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'tahun' =>'required|max:255',
+            'nominal' =>'required|max:255',
+        ]);
+
+        $spp = new Spp;
+        $spp->tahun = $request->tahun;
+        $spp->nominal = $request->nominal;
+        $spp->save();
+
+        return redirect()->route('dataSpp.index')
+        ->with('message', 'Data berhasil ditambahkan!');
     }
 
     /**
@@ -42,24 +54,40 @@ class SppController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Spp $spp)
+    public function edit($id)
     {
-        //
+        $spp = Spp::find($id);
+        return view('pages.spp.edit', compact('spp'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Spp $spp)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'tahun' =>'required|max:255',
+            'nominal' =>'required|max:255',
+        ]);
+
+        $spp = Spp::find($id);
+        $spp->tahun = $request->tahun;
+        $spp->nominal = $request->nominal;
+        $spp->save();
+
+        return redirect()->route('dataSpp.index')
+        ->with('message', 'Data berhasil diubah!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Spp $spp)
+    public function destroy($id)
     {
-        //
+        $spp = Spp::find($id);
+        $spp->delete();
+
+        return redirect()->route('dataSpp.index')
+        ->with('message', 'Data berhasil dihapus!');
     }
 }

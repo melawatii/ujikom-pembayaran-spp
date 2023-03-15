@@ -1,4 +1,4 @@
-@extends('dashboard.layout')
+@extends('pages.layout.index')
 
 @section('content')
 <main class="main-content position-relative border-radius-lg ">
@@ -22,24 +22,14 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="example-text-input" class="form-control-label">Tahun</label>
-                                        <input class="form-control" name="tahun" id="tahun" type="number" placeholder="Masukkan tahun ..." value="{{ old('tahun', $spp->tahun) }}" required autofocus>
-                                        @error('tahun')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
+                                        <label for="tahun" class="form-control-label">Tahun</label>
+                                        <input class="form-control" name="tahun" id="tahun" type="number" placeholder="Masukkan tahun ..." value="{{ $spp->tahun }}" required autofocus>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="example-text-input" class="form-control-label">Nominal</label>
-                                        <input class="form-control" name="nominal" id="nominal" type="number" placeholder="Masukkan nominal ..." value="{{ old('nominal', $spp->nominal) }}" required>
-                                        @error('nominal')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
+                                        <label for="nominal" class="form-control-label">Nominal</label>
+                                        <input class="form-control" name="nominal" id="nominal" type="number" placeholder="Masukkan jumlah nominal ..." value="{{ $spp->nominal }}" required>
                                     </div>
                                 </div>
                             </div>

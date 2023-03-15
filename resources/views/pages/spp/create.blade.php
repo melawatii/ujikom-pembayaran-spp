@@ -1,4 +1,4 @@
-@extends('dashboard.layout')
+@extends('pages.layout.index')
 
 @section('content')
 <main class="main-content position-relative border-radius-lg ">
@@ -6,7 +6,7 @@
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
         <div class="container-fluid py-1 px-3">
             <nav aria-label="breadcrumb">
-                <h6 class="font-weight-bolder text-white mt-4 mb-0">Create Data SPP</h6>
+                <h6 class="font-weight-bolder text-white mt-4 mb-0">Tambah Data SPP</h6>
             </nav>
         </div>
     </nav>
@@ -21,24 +21,14 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="example-text-input" class="form-control-label">Tahun</label>
-                                        <input class="form-control" name="tahun" id="tahun" type="number" placeholder="Masukkan tahun ..." value="{{ old('tahun') }}" required autofocus>
-                                        @error('tahun')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
+                                        <label for="tahun" class="form-control-label">Tahun</label>
+                                        <input class="form-control" name="tahun" id="tahun" type="number" placeholder="Masukkan tahun ..." required autofocus>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="example-text-input" class="form-control-label">Nominal</label>
-                                        <input class="form-control" name="nominal" id="nominal" type="number" placeholder="Masukkan nominal ..." value="{{ old('nominal') }}" required>
-                                        @error('nominal')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
+                                        <label for="nominal" class="form-control-label">Nominal</label>
+                                        <input class="form-control" name="nominal" id="nominal" type="number" placeholder="Masukkan jumlah nominal ..." required>
                                     </div>
                                 </div>
                             </div>
