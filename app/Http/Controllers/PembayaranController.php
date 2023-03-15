@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Spp;
+use App\Models\User;
+use App\Models\Siswa;
+use App\Models\Tunggakan;
 use App\Models\Pembayaran;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class PembayaranController extends Controller
 {
@@ -12,7 +17,8 @@ class PembayaranController extends Controller
      */
     public function index()
     {
-        //
+        $pembayaran = Pembayaran::all();
+        return view('pages.pembayaran.index', compact('pembayaran'));
     }
 
     /**
@@ -20,7 +26,11 @@ class PembayaranController extends Controller
      */
     public function create()
     {
-        //
+        $nisn = Siswa::all();
+        $id_petugas = User::all();
+        $id_tunggakan = Tunggakan::all();
+        $id_spp = Spp::all();
+        return view('pages.pembayaran.create', compact('id_tunggakan', 'nisn', 'id_petugas', 'id_spp'));
     }
 
     /**
@@ -28,7 +38,37 @@ class PembayaranController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'id_petugas' => ['required', 'string'],
+            'id_spp' => ['required'],
+            'nama' => ['required'],
+            'tunggakan' => ['required'],
+            'bulan_dibayar' => ['required', 'numeric'],
+            'jumlah_bayar' => ['required']
+        ];
+
+        if ($request->tunggakan) {
+            $tunggakan = Tunggakan::find($request->tunggakan);
+            array_push($rules['bulan_dibayar'], 'max:' . $tunggakan->sisa_bulan);
+            array_push($rules['jumlah_bayar'], 'max:' . $tunggakan->sisa_tunggakan);
+        }
+
+        $validatedData = $request->validate($rules);
+
+        if ($request->tunggakan) {
+            $tunggakan = Tunggakan::find($request->tunggakan);
+            $tunggakan->sisa_bulan -= $request->bulan_dibayar;
+            $tunggakan->sisa_tunggakan -= $request->jumlah_bayar;
+            $tunggakan->save();
+
+            $validatedData['sisa_bayar'] = $tunggakan->sisa_tunggakan - $request->jumlah_bayar;
+            $validatedData['nisn'] = $request->tunggakan;
+            unset($validatedData['tunggakan']);
+
+            Pembayaran::create($validatedData);
+
+            return to_route('dataPembayaran.index')->with('message', 'Data berhasil ditambahkan!');
+        }
     }
 
     /**
@@ -42,7 +82,7 @@ class PembayaranController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Pembayaran $pembayaran)
+    public function edit($id)
     {
         //
     }
@@ -50,7 +90,7 @@ class PembayaranController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Pembayaran $pembayaran)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -58,8 +98,11 @@ class PembayaranController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pembayaran $pembayaran)
+    public function destroy($id)
     {
-        //
+        $pembayaran = Pembayaran::find($id);
+        $pembayaran->delete();
+
+        return redirect('/dataPembayaran')->with('message', 'Data berhasil dihapus!');
     }
 }

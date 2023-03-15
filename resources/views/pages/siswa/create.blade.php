@@ -40,11 +40,11 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <label for="example-text-input" class="form-control-label">Kelas</label>
-                          @foreach ($id_kelas as $kelas)
                             <select name="id_kelas" class="form-control">
-                                <option value="{{ $kelas->nama_kelas }}">{{ $kelas->nama_kelas }}</option>
+                                @foreach ($id_kelas as $kelas)
+                                    <option value="{{ $kelas->nama_kelas }}">{{ $kelas->nama_kelas }}</option>
+                                @endforeach
                             </select>
-                          @endforeach
                         </div>
                       </div>
                       <div class="col-md-12">
@@ -61,12 +61,12 @@
                       </div>
                       <div class="col-md-12">
                         <div class="form-group">
-                          <label for="example-text-input" class="form-control-label">SPP</label>
-                          @foreach ($id_spp as $spp)
+                            <label label for="example-text-input" class="form-control-label">SPP</label>
                             <select name="id_spp" class="form-control">
-                                <option value="{{ $spp->nominal }}">{{ $spp->nominal }}</option>
+                                @foreach ($id_spp as $spp)
+                                    <option value="{{ $spp->nominal }}">{{ $spp->nominal }}</option>
+                                @endforeach
                             </select>
-                          @endforeach
                         </div>
                       </div>
                     <hr class="horizontal dark">
