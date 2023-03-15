@@ -24,17 +24,22 @@ Route::get('/', function () {
     return view('pages.login.index');
 });
 
-Route::get('/dashboard', function () {
-    return view('pages.layout.dashboard');
-});
 
 Route::get('/', [LoginController::class, 'index']);
 Route::post('/', [LoginController::class, 'authanticate']);
 Route::get('/logout', [LoginController::class, 'logout']);
 
-Route::resource('dataSpp', SppController::class);
-Route::resource('dataKelas', KelasController::class);
-Route::resource('dataSiswa', SiswaController::class);
-Route::resource('dataPetugas', PetugasController::class);
-Route::resource('dataPembayaran', PembayaranController::class);
-Route::resource('dataTunggakan', TunggakanController::class);
+Route::middleware('login')->group(function () {
+
+    Route::get('/dashboard', function () {
+        return view('pages.layout.dashboard');
+    });
+
+    Route::resource('dataSpp', SppController::class)->middleware(('admin'));
+    Route::resource('dataKelas', KelasController::class)->middleware(('admin'));
+    Route::resource('dataSiswa', SiswaController::class)->middleware(('admin'));
+    Route::resource('dataPetugas', PetugasController::class)->middleware(('admin'));
+    Route::resource('dataPembayaran', PembayaranController::class)->middleware(('admin'));
+    Route::resource('dataTunggakan', TunggakanController::class)->middleware(('admin'));
+
+});
