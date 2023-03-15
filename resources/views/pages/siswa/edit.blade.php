@@ -6,7 +6,7 @@
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
         <div class="container-fluid py-1 px-3">
             <nav aria-label="breadcrumb">
-                <h6 class="font-weight-bolder text-white mt-3 mb-0">Create Data Siswa</h6>
+                <h6 class="font-weight-bolder text-white mt-4 mb-0">Edit Data Siswa</h6>
             </nav>
         </div>
     </nav>
@@ -23,19 +23,19 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">NISN</label>
-                                        <input class="form-control" type="number" name="nisn" value="{{ $siswa->nisn }}">
+                                        <input class="form-control" type="number" name="nisn" value="{{ $siswa->nisn }}" value="Masukkan nisn ...">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">NIS</label>
-                                        <input class="form-control" type="number" name="nis" value="{{ $siswa->nis }}">
+                                        <input class="form-control" type="number" name="nis" value="{{ $siswa->nis }}" value="Masukkan nis ...">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Nama</label>
-                                        <input class="form-control" type="text" name="nama" value="{{ $siswa->nama }}">
+                                        <input class="form-control" type="text" name="nama" value="{{ $siswa->nama }}" value="Masukkan nama ...">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -61,19 +61,19 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Alamat</label>
-                                        <textarea class="form-control" type="text" name="alamat" value="{{ $siswa->alamat }}"></textarea>
+                                        <textarea class="form-control" type="text" name="alamat" value="{{ $siswa->alamat }}" value="Masukkan alamat ..."></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">No Telp</label>
-                                        <input class="form-control" type="number" name="no_telp" value="{{ $siswa->no_telp }}">
+                                        <input class="form-control" type="number" name="no_telp" value="{{ $siswa->no_telp }}" value="Masukkan no telp ...">
                                     </div>
                                 </div>
                                 <hr class="horizontal dark">
                                 <div class="card-header pb-0">
                                     <div class="d-flex align-items-center">
-                                        <button class="btn btn-primary btn-sm ms-auto">Save</button>
+                                        <button class="btn btn-primary btn-sm ms-auto">Simpan</button>
                                     </div>
                                 </div>
                             </form>

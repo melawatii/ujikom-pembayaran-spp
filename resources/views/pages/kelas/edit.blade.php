@@ -35,7 +35,7 @@
                             </div>
                             <hr class="horizontal dark">
                             <div class="d-flex justify-content-end mt-4">
-                                <button class="btn btn-primary btn-sm me-3">Save</button>
+                                <button class="btn btn-primary btn-sm me-3">Simpan</button>
                             </div>
                         </form>
                     </div>

@@ -6,7 +6,7 @@
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
         <div class="container-fluid py-1 px-3">
             <nav aria-label="breadcrumb">
-                <h6 class="font-weight-bolder text-white mt-3 mb-0">Create Data Kelas</h6>
+                <h6 class="font-weight-bolder text-white mt-4 mb-0">Tambah Data Kelas</h6>
             </nav>
         </div>
     </nav>
@@ -22,19 +22,19 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Username</label>
-                                        <input class="form-control" type="text" name="username">
+                                        <input class="form-control" type="text" name="username" value="Masukkan username ...">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Password</label>
-                                        <input class="form-control" type="password" name="password">
+                                        <input class="form-control" type="password" name="password" value="Masukkan password ...">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Nama Petugas</label>
-                                        <input class="form-control" type="text" name="nama_petugas">
+                                        <input class="form-control" type="text" name="nama_petugas" value="Masukkan nama petugas ...">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -50,7 +50,7 @@
                                 <hr class="horizontal dark">
                                 <div class="card-header pb-0">
                                     <div class="d-flex align-items-center">
-                                        <button class="btn btn-primary btn-sm ms-auto">Save</button>
+                                        <button class="btn btn-primary btn-sm ms-auto">Simpan</button>
                                     </div>
                                 </div>
                             </form>
