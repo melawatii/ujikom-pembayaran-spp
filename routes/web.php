@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SppController;
 use App\Http\Controllers\KelasController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\TunggakanController;
@@ -23,6 +24,13 @@ Route::get('/', function () {
     return view('pages.login.index');
 });
 
+Route::get('/dashboard', function () {
+    return view('pages.layout.dashboard');
+});
+
+Route::get('/', [LoginController::class, 'index']);
+Route::post('/', [LoginController::class, 'authanticate']);
+Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::resource('dataSpp', SppController::class);
 Route::resource('dataKelas', KelasController::class);
