@@ -26,7 +26,8 @@
                                 <thead>
                                     <tr>
                                         <th class="text-uppercase text-xs font-weight-bolder opacity-9">No.</th>
-                                        <th class="text-uppercase text-xs font-weight-bolder opacity-9">History</th>
+                                        <th class="text-uppercase text-xs font-weight-bolder opacity-9">Histori</th>
+                                        <th class="text-uppercase text-xs font-weight-bolder opacity-9">Waktu</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -37,6 +38,9 @@
                                             </td>
                                             <td class="text-xs font-weight-bolder opacity-7">
                                                 <span class="text-info">{{ $row->user }}</span> {{ $row->message }}
+                                            </td>
+                                            <td class="text-xs font-weight-bolder opacity-7">
+                                                {{ $row->created_at }}
                                             </td>
                                         </tr>
                                     @endforeach

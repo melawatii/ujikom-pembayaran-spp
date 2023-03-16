@@ -37,7 +37,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="nama" class="form-control-label">Nama</label>
-                                        <select class="form-control" name="nama" id="nama" required autofocus>
+                                        <select class="form-control" name="nama" id="nama" required>
                                             @foreach($nisn as $siswa)
                                                 <option value="{{$siswa->nisn}}">{{$siswa->nama}}</option>
                                             @endforeach

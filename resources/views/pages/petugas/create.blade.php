@@ -22,25 +22,25 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Username</label>
-                                        <input class="form-control" type="text" name="username" placeholder="Masukkan username ...">
+                                        <input class="form-control" type="text" name="username" placeholder="Masukkan username ..." required autofocus>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Password</label>
-                                        <input class="form-control" type="password" name="password" placeholder="Masukkan password ...">
+                                        <input class="form-control" type="password" name="password" placeholder="Masukkan password ..." required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Nama Petugas</label>
-                                        <input class="form-control" type="text" name="nama_petugas" placeholder="Masukkan nama petugas ...">
+                                        <input class="form-control" type="text" name="nama_petugas" placeholder="Masukkan nama petugas ..." required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Level</label>
-                                        <select class="form-control" name="level">
+                                        <select class="form-control" name="level" required>
                                             <option value="Admin">Admin</option>
                                             <option value="Petugas">Petugas</option>
                                             <option value="Siswa">Siswa</option>

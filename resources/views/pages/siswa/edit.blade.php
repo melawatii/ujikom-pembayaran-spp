@@ -23,51 +23,51 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">NISN</label>
-                                        <input class="form-control" type="number" name="nisn" value="{{ $siswa->nisn }}" value="Masukkan nisn ...">
+                                        <input class="form-control" type="number" name="nisn" value="{{ $siswa->nisn }}" value="Masukkan nisn ..." required autofocus>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">NIS</label>
-                                        <input class="form-control" type="number" name="nis" value="{{ $siswa->nis }}" value="Masukkan nis ...">
+                                        <input class="form-control" type="number" name="nis" value="{{ $siswa->nis }}" value="Masukkan nis ..." required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Nama</label>
-                                        <input class="form-control" type="text" name="nama" value="{{ $siswa->nama }}" value="Masukkan nama ...">
+                                        <input class="form-control" type="text" name="nama" value="{{ $siswa->nama }}" value="Masukkan nama ..." required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Kelas</label>
-                                        @foreach ($id_kelas as $kelas)
-                                            <select name="id_kelas" class="form-control" value="{{ $siswa->id_kelas }}">
+                                        <select name="id_kelas" class="form-control" value="{{ $siswa->id_kelas }}" required>
+                                            @foreach ($id_kelas as $kelas)
                                                 <option value="{{ $kelas->nama_kelas }}">{{ $kelas->nama_kelas }}</option>
-                                            </select>
-                                        @endforeach
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">SPP</label>
-                                        @foreach ($id_spp as $spp)
-                                            <select name="id_spp" class="form-control" value="{{ $siswa->id_spp }}">
+                                        <select name="id_spp" class="form-control" value="{{ $siswa->id_spp }}" required>
+                                            @foreach ($id_spp as $spp)
                                                 <option value="{{ $spp->nominal }}">{{ $spp->nominal }}</option>
-                                            </select>
-                                    @endforeach
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Alamat</label>
-                                        <textarea class="form-control" type="text" name="alamat" value="{{ $siswa->alamat }}" value="Masukkan alamat ..."></textarea>
+                                        <textarea class="form-control" type="text" name="alamat" value="{{ $siswa->alamat }}" value="Masukkan alamat ..." required></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">No Telp</label>
-                                        <input class="form-control" type="number" name="no_telp" value="{{ $siswa->no_telp }}" value="Masukkan no telp ...">
+                                        <input class="form-control" type="number" name="no_telp" value="{{ $siswa->no_telp }}" value="Masukkan no telp ..." required>
                                     </div>
                                 </div>
                                 <hr class="horizontal dark">

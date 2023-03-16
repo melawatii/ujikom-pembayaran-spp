@@ -22,25 +22,25 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">NISN</label>
-                                        <input class="form-control" type="number" name="nisn" placeholder="Masukkan nisn ...">
+                                        <input class="form-control" type="number" name="nisn" placeholder="Masukkan nisn ..." required autofocus>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">NIS</label>
-                                        <input class="form-control" type="number" name="nis" placeholder="Masukkan nis ...">
+                                        <input class="form-control" type="number" name="nis" placeholder="Masukkan nis ..." required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Nama</label>
-                                        <input class="form-control" type="text" name="nama" placeholder="Masukkan nama ...">
+                                        <input class="form-control" type="text" name="nama" placeholder="Masukkan nama ..." required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Kelas</label>
-                                        <select name="id_kelas" class="form-control">
+                                        <select name="id_kelas" class="form-control" required>
                                             @foreach ($id_kelas as $kelas)
                                                 <option value="{{ $kelas->nama_kelas }}">{{ $kelas->nama_kelas }}</option>
                                             @endforeach
@@ -50,19 +50,19 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Alamat</label>
-                                        <textarea class="form-control" type="text" name="alamat" placeholder="Masukkan alamat ..."></textarea>
+                                        <textarea class="form-control" type="text" name="alamat" placeholder="Masukkan alamat ..." required></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">No Telp</label>
-                                        <input class="form-control" type="number" name="no_telp" placeholder="Masukkan no telp ...">
+                                        <input class="form-control" type="number" name="no_telp" placeholder="Masukkan no telp ..." required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label label for="example-text-input" class="form-control-label">SPP</label>
-                                        <select name="id_spp" class="form-control">
+                                        <select name="id_spp" class="form-control" required>
                                             @foreach ($id_spp as $spp)
                                                 <option value="{{ $spp->nominal }}">{{ $spp->nominal }}</option>
                                             @endforeach

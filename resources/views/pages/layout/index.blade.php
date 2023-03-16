@@ -103,7 +103,7 @@
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
                         </div>
-                        <span class="nav-link-text ms-1">Entry Pembayaran</span>
+                        <span class="nav-link-text ms-1">Entri Pembayaran</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -111,7 +111,7 @@
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-align-left-2 text-info text-sm opacity-10"></i>
                         </div>
-                        <span class="nav-link-text ms-1">History Pembayaran</span>
+                        <span class="nav-link-text ms-1">Histori Pembayaran</span>
                     </a>
                 </li>
                 @endif
@@ -133,7 +133,7 @@
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
                         </div>
-                        <span class="nav-link-text ms-1">Entry Pembayaran</span>
+                        <span class="nav-link-text ms-1">Entri Pembayaran</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -141,7 +141,7 @@
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-align-left-2 text-info text-sm opacity-10"></i>
                         </div>
-                        <span class="nav-link-text ms-1">History Pembayaran</span>
+                        <span class="nav-link-text ms-1">Histori Pembayaran</span>
                     </a>
                 </li>
                 @endif
@@ -155,7 +155,7 @@
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-align-left-2 text-info text-sm opacity-10"></i>
                         </div>
-                        <span class="nav-link-text ms-1">History Pembayaran</span>
+                        <span class="nav-link-text ms-1">Histori Pembayaran</span>
                     </a>
                 </li>
                 @endif
@@ -186,7 +186,7 @@
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-collection text-warning text-sm opacity-10"></i>
                         </div>
-                        <span class="nav-link-text ms-1">Logout</span>
+                        <span class="nav-link-text ms-1">Keluar</span>
                     </a>
                 </li>
             </ul>

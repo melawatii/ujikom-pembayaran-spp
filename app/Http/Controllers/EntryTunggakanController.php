@@ -39,6 +39,15 @@ class EntryTunggakanController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'id_petugas' =>'required',
+            'nisn' =>'required',
+            'nama' =>'required',
+            'id_spp' =>'required',
+            'bulan_tunggakan' =>'required|max:255',
+            'total_tunggakan' =>'required|max:255',
+        ]);
+
         $tunggakan = new Tunggakan;
         $tunggakan->id_petugas = $request->id_petugas;
         $tunggakan->nisn = $request->nisn;
@@ -93,7 +102,42 @@ class EntryTunggakanController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'id_petugas' =>'required',
+            'nisn' =>'required',
+            'nama' =>'required',
+            'id_spp' =>'required',
+            'bulan_tunggakan' =>'required|max:255',
+            'total_tunggakan' =>'required|max:255',
+        ]);
+
+        $tunggakan = Tunggakan::find($id);
+        $tunggakan->id_petugas = $request->id_petugas;
+        $tunggakan->nisn = $request->nisn;
+        $tunggakan->nama = $request->nama;
+        $tunggakan->id_spp = $request->id_spp;
+        $tunggakan->bulan_tunggakan = $request->bulan_tunggakan;
+
+        $tunggakan->total_tunggakan = $tunggakan->id_spp * $tunggakan->bulan_tunggakan;
+        $request->total_tunggakan = $tunggakan->total_tunggakan;
+
+        $tunggakan->sisa_bulan = $request->bulan_tunggakan;
+        $tunggakan->sisa_tunggakan = $request->total_tunggakan;
+
+        $tunggakan->save();
+
+        $currentDateTime = Carbon::now();
+        $user = Auth::user()->nama_petugas;
+
+        $logs = DB::table('logs')->insert([
+            'user' => $user,
+            'message' => 'mengubah Data Tunggakan',
+            'created_at' => $currentDateTime,
+            'updated_at' => $currentDateTime,
+        ]);
+
+        return redirect()->route('entryTunggakan.index', compact('logs'))
+        ->with('message', 'Data berhasil diubah!');
     }
 
     /**
