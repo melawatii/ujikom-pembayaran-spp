@@ -15,7 +15,7 @@ class HistoryController extends Controller
      */
     public function index()
     {
-        $history = Pembayaran::where('nama', Auth::user()->username);
+        $history = Pembayaran::where('nama', Auth::user()->username)->get();
         return view('pages.pembayaran.siswa.historySiswa', compact('history'));
     }
 }

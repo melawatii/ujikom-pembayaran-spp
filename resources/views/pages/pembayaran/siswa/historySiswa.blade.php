@@ -16,8 +16,8 @@
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-body px-0 pt-0 pb-2">
-                        <div class="table-responsive p-0">
-                            <table class="table align-items-center mt-4 mb-0">
+                        <div class="table-responsive p-0 mt-5">
+                            <table class="table align-items-center mt-5 mb-0" id="dataTable">
                                 <thead>
                                     <tr>
                                         <th class="text-uppercase text-xs font-weight-bolder opacity-9">No</th>

@@ -19,6 +19,16 @@
     <link href="/assets/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="/assets/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
+
+    <style>
+        .dataTables_wrapper .dataTables_filter {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
 </head>
 
 <body class="g-sidenav-show   bg-gray-100">
@@ -176,6 +186,22 @@
     @yield('content')
 
     <!--   Core JS Files   -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function () {
+        $('#dataTable').DataTable({
+            "lengthMenu": false,
+            "info": false,
+            "infoEmpty": false,
+            "infoFiltered": false,
+            "zeroRecords": false,
+            "paginate": false
+        });
+        });
+    </script>
+
     <script src="/assets/js/core/popper.min.js"></script>
     <script src="/assets/js/core/bootstrap.min.js"></script>
     <script src="/assets/js/plugins/perfect-scrollbar.min.js"></script>
