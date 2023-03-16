@@ -47,6 +47,7 @@ class PembayaranController extends Controller
             'nama' => ['required'],
             'tunggakan' => ['required'],
             'bulan_dibayar' => ['required', 'numeric'],
+            'nama_bulan' => ['required'],
             'jumlah_bayar' => ['required']
         ];
 

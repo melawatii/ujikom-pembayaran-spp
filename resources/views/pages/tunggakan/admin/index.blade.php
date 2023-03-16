@@ -37,6 +37,7 @@
                                         <th class="text-uppercase text-xs font-weight-bolder opacity-9">SPP</th>
                                         <th class="text-uppercase text-xs font-weight-bolder opacity-9">Bulan Tunggakan</th>
                                         <th class="text-uppercase text-xs font-weight-bolder opacity-9">Total Tunggakan</th>
+                                        {{-- <th class="text-uppercase text-xs font-weight-bolder opacity-9">Bulan Bayar</th> --}}
                                         <th class="text-uppercase text-xs font-weight-bolder opacity-9">Action</th>
                                     </tr>
                                 </thead>
@@ -49,7 +50,7 @@
                                             <td class="text-xs font-weight-bolder opacity-7">
                                                 {{ $row->id_petugas }}
                                             </td>
-                                            <td class="text-xs font-weight-bolder opacity-7" align="center">
+                                            <td class="text-xs font-weight-bolder opacity-7" >
                                                 {{ $row->nisn }}
                                             </td>
                                             <td class="text-xs font-weight-bolder opacity-7">
@@ -76,6 +77,12 @@
                                                 Rp {{ number_format($row->sisa_tunggakan) }}
                                                 </td>
                                             @endif
+                                            {{-- <td class="text-xs font-weight-bolder opacity-7">
+                                            @foreach ($dataBulan as $bulan)
+                                                {{ $bulan->nama_bulan }}
+                                                <br>
+                                                @endforeach
+                                            </td> --}}
                                             <td class="text-xs font-weight-bolder opacity-7">
                                                 <form action="{{ route('dataTunggakan.destroy',$row->id) }}" method="POST">
                                                     <a href="{{ route('dataTunggakan.edit', $row->id) }}" class="btn btn-sm mb-0 me-1 btn-warning">Edit</a>

@@ -35,6 +35,7 @@
                                         <th class="text-uppercase text-xs font-weight-bolder opacity-9">NISN</th>
                                         <th class="text-uppercase text-xs font-weight-bolder opacity-9">Waktu Bayar</th>
                                         <th class="text-uppercase text-xs font-weight-bolder opacity-9">SPP</th>
+                                        <th class="text-uppercase text-xs font-weight-bolder opacity-9">Jumlah Bulan</th>
                                         <th class="text-uppercase text-xs font-weight-bolder opacity-9">Bulan Dibayar</th>
                                         <th class="text-uppercase text-xs font-weight-bolder opacity-9">Jumlah Bayar</th>
                                         <th class="text-uppercase text-xs font-weight-bolder opacity-9">Action</th>
@@ -49,10 +50,10 @@
                                             <td class="text-xs font-weight-bolder opacity-7">
                                                 {{ $row->id_petugas }}
                                             </td>
-                                            <td class="text-xs font-weight-bolder opacity-7" align="center">
+                                            <td class="text-xs font-weight-bolder opacity-7" >
                                                 {{ $row->nama }}
                                             </td>
-                                            <td class="text-xs font-weight-bolder opacity-7" align="center">
+                                            <td class="text-xs font-weight-bolder opacity-7" >
                                                 {{ substr($row->created_at, 0, 10) }}
                                             </td>
                                             <td class="text-xs font-weight-bolder opacity-7">
@@ -60,6 +61,9 @@
                                             </td>
                                             <td class="text-xs text-success font-weight-bolder opacity-7">
                                                 {{ $row->bulan_dibayar }} Bulan
+                                            </td>
+                                            <td class="text-xs font-weight-bolder opacity-7" >
+                                                {{ $row->nama_bulan }}
                                             </td>
                                             <td class="text-xs text-success font-weight-bolder opacity-7">
                                                 Rp {{ number_format($row->jumlah_bayar) }}

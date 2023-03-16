@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Spp;
 use App\Models\User;
+use App\Models\Bulan;
 use App\Models\Siswa;
 use App\Models\Tunggakan;
+use App\Models\Pembayaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -19,6 +21,20 @@ class TunggakanController extends Controller
      */
     public function index()
     {
+        // $dataBulan = Bulan::pluck('nama_bulan');
+        // $bulanBayar = Pembayaran::select('nama_bulan', 'nama')->get();
+
+        // if ($dataBulan == $bulanBayar) {
+        //     dd($dataBulan);
+        // }
+
+        // $dataBulan = DB::table('bulan')
+        //         ->join('pembayaran', 'bulan.nama_bulan', '=', 'pembayaran.nama_bulan')
+        //         ->select('bulan.nama_bulan', 'pembayaran.nama_bulan', 'pembayaran.nisn')
+        //         ->get();
+
+        // dd($dataBulan);
+
         $tunggakan = Tunggakan::all();
         return view('pages.tunggakan.admin.index', compact('tunggakan'));
     }

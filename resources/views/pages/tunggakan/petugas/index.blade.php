@@ -49,7 +49,7 @@
                                             <td class="text-xs font-weight-bolder opacity-7">
                                                 {{ $row->id_petugas }}
                                             </td>
-                                            <td class="text-xs font-weight-bolder opacity-7" align="center">
+                                            <td class="text-xs font-weight-bolder opacity-7" >
                                                 {{ $row->nisn }}
                                             </td>
                                             <td class="text-xs font-weight-bolder opacity-7">

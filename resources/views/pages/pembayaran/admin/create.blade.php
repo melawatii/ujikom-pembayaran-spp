@@ -56,8 +56,39 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="bulan_dibayar" class="form-control-label">Bulan Dibayar</label>
+                                        <label for="bulan_dibayar" class="form-control-label">Jumlah Bulan</label>
                                         <input class="form-control" name="bulan_dibayar" id="bulan_dibayar" type="number" placeholder="Masukkan jumlah bulan dibayar ..." required>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="nama_bulan" class="form-control-label">Bulan Dibayar</label>
+                                        <br>
+                                        {{-- <input class="form-control" name="nama_bulan" id="nama_bulan" type="text" placeholder="Masukkan nama bulan ..." required> --}}
+                                        <input class="form" type="checkbox" name="nama_bulan" id="nama_bulan" value="Januari">
+                                        <label class="form" for="nama_bulan">Januari</label> &nbsp;  &nbsp;
+                                        <input class="form" type="checkbox" name="nama_bulan" id="nama_bulan" value="Februari">
+                                        <label class="form" for="nama_bulan">Februari</label> &nbsp;  &nbsp;
+                                        <input class="form" type="checkbox" name="nama_bulan" id="nama_bulan" value="Maret">
+                                        <label class="form" for="nama_bulan">Maret</label> &nbsp;  &nbsp;
+                                        <input class="form" type="checkbox" name="nama_bulan" id="nama_bulan" value="April">
+                                        <label class="form" for="nama_bulan">April</label> &nbsp;  &nbsp;
+                                        <input class="form" type="checkbox" name="nama_bulan" id="nama_bulan" value="Mei">
+                                        <label class="form" for="nama_bulan">Mei</label> &nbsp;  &nbsp;
+                                        <input class="form" type="checkbox" name="nama_bulan" id="nama_bulan" value="Juni">
+                                        <label class="form" for="nama_bulan">Juni</label> &nbsp;  &nbsp;
+                                        <input class="form" type="checkbox" name="nama_bulan" id="nama_bulan" value="Juli">
+                                        <label class="form" for="nama_bulan">Juli</label> &nbsp;  &nbsp;
+                                        <input class="form" type="checkbox" name="nama_bulan" id="nama_bulan" value="Agustus">
+                                        <label class="form" for="nama_bulan">Agustus</label> &nbsp;  &nbsp;
+                                        <input class="form" type="checkbox" name="nama_bulan" id="nama_bulan" value="September">
+                                        <label class="form" for="nama_bulan">September</label> &nbsp;  &nbsp;
+                                        <input class="form" type="checkbox" name="nama_bulan" id="nama_bulan" value="Oktober">
+                                        <label class="form" for="nama_bulan">Oktober</label> &nbsp;  &nbsp;
+                                        <input class="form" type="checkbox" name="nama_bulan" id="nama_bulan" value="November">
+                                        <label class="form" for="nama_bulan">November</label> &nbsp;  &nbsp;
+                                        <input class="form" type="checkbox" name="nama_bulan" id="nama_bulan" value="Desember">
+                                        <label class="form" for="nama_bulan">Desember</label>
                                     </div>
                                 </div>
                                 <div class="col-md-12">

@@ -20,6 +20,7 @@
 </head>
 <body>
     <h3 align="center">Laporan Hasil Pembayaran SPP</h3>
+    <h4 align="center">SMK WIKRAMA BOGOR</h4>
     <table class="table align-items-center mt-4 mb-0">
         <thead>
             <tr>

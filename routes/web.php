@@ -66,5 +66,6 @@ Route::middleware('login')->group(function () {
 
     // siswa
     Route::get('/historySiswa', [HistoryController::class, 'index'])->middleware(('siswa'));
+    Route::get('/tunggakanSiswa', [HistoryController::class, 'tunggakan'])->middleware(('siswa'));
 
 });

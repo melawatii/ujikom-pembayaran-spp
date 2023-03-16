@@ -49,10 +49,10 @@
                                             <td class="text-xs font-weight-bolder opacity-7">
                                                 {{ $row->id_petugas }}
                                             </td>
-                                            <td class="text-xs font-weight-bolder opacity-7" align="center">
+                                            <td class="text-xs font-weight-bolder opacity-7" >
                                                 {{ $row->nama }}
                                             </td>
-                                            <td class="text-xs font-weight-bolder opacity-7" align="center">
+                                            <td class="text-xs font-weight-bolder opacity-7" >
                                                 {{ substr($row->created_at, 0, 10) }}
                                             </td>
                                             <td class="text-xs font-weight-bolder opacity-7">
