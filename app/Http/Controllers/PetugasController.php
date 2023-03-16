@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use App\Models\Logs;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class PetugasController extends Controller
@@ -44,7 +49,17 @@ class PetugasController extends Controller
         $petugas->level = $request->level;
         $petugas->save();
 
-        return redirect()->route('dataPetugas.index')
+        $currentDateTime = Carbon::now();
+        $user = Auth::user()->nama_petugas;
+
+        $logs = DB::table('logs')->insert([
+            'user' => $user,
+            'message' => 'menambahkan Data Petugas',
+            'created_at' => $currentDateTime,
+            'updated_at' => $currentDateTime,
+        ]);
+
+        return redirect()->route('dataPetugas.index', compact('logs'))
         ->with('message', 'Data berhasil ditambahkan!');
     }
 
@@ -84,7 +99,17 @@ class PetugasController extends Controller
         $petugas->level = $request->level;
         $petugas->save();
 
-        return redirect()->route('dataPetugas.index')
+        $currentDateTime = Carbon::now();
+        $user = Auth::user()->nama_petugas;
+
+        $logs = DB::table('logs')->insert([
+            'user' => $user,
+            'message' => 'mengubah Data Petugas',
+            'created_at' => $currentDateTime,
+            'updated_at' => $currentDateTime,
+        ]);
+
+        return redirect()->route('dataPetugas.index', compact('logs'))
         ->with('message', 'Data berhasil diubah!');
     }
 
@@ -96,7 +121,23 @@ class PetugasController extends Controller
         $petugas = User::find($id);
         $petugas->delete();
 
-        return redirect()->route('dataPetugas.index')
+        $currentDateTime = Carbon::now();
+        $user = Auth::user()->nama_petugas;
+
+        $logs = DB::table('logs')->insert([
+            'user' => $user,
+            'message' => 'menghapus Data Petugas',
+            'created_at' => $currentDateTime,
+            'updated_at' => $currentDateTime,
+        ]);
+
+        return redirect()->route('dataPetugas.index', compact('logs'))
         ->with('message', 'Data berhasil dihapus!');
+    }
+
+    public function logs()
+    {
+        $logs = Logs::all();
+        return view('pages.petugas.logs', compact('logs'));
     }
 }

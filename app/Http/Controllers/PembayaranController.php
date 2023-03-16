@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Spp;
 use App\Models\User;
 use App\Models\Siswa;
 use App\Models\Tunggakan;
 use App\Models\Pembayaran;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class PembayaranController extends Controller
 {
@@ -67,7 +70,17 @@ class PembayaranController extends Controller
 
             Pembayaran::create($validatedData);
 
-            return redirect()->route('dataPembayaran.index')
+            $currentDateTime = Carbon::now();
+            $user = Auth::user()->nama_petugas;
+
+            $logs = DB::table('logs')->insert([
+                'user' => $user,
+                'message' => 'menambahkan Data Pembayaran',
+                'created_at' => $currentDateTime,
+                'updated_at' => $currentDateTime,
+            ]);
+
+            return redirect()->route('dataPembayaran.index', compact('logs'))
             ->with('message', 'Data berhasil ditambahkan!');
         }
     }
@@ -103,7 +116,18 @@ class PembayaranController extends Controller
     {
         $pembayaran = Pembayaran::find($id);
         $pembayaran->delete();
-        return redirect()->route('dataPembayaran.index')
+
+        $currentDateTime = Carbon::now();
+        $user = Auth::user()->nama_petugas;
+
+        $logs = DB::table('logs')->insert([
+            'user' => $user,
+            'message' => 'menghapus Data Pembayaran',
+            'created_at' => $currentDateTime,
+            'updated_at' => $currentDateTime,
+        ]);
+
+        return redirect()->route('dataPembayaran.index', compact('logs'))
         ->with('message', 'Data berhasil dihapus!');
     }
 

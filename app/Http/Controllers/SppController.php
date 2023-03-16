@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Spp;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class SppController extends Controller
 {
@@ -39,7 +43,17 @@ class SppController extends Controller
         $spp->nominal = $request->nominal;
         $spp->save();
 
-        return redirect()->route('dataSpp.index')
+        $currentDateTime = Carbon::now();
+        $user = Auth::user()->nama_petugas;
+
+        $logs = DB::table('logs')->insert([
+            'user' => $user,
+            'message' => 'menambahkan Data SPP',
+            'created_at' => $currentDateTime,
+            'updated_at' => $currentDateTime,
+        ]);
+
+        return redirect()->route('dataSpp.index', compact('logs'))
         ->with('message', 'Data berhasil ditambahkan!');
     }
 
@@ -75,7 +89,17 @@ class SppController extends Controller
         $spp->nominal = $request->nominal;
         $spp->save();
 
-        return redirect()->route('dataSpp.index')
+        $currentDateTime = Carbon::now();
+        $user = Auth::user()->nama_petugas;
+
+        $logs = DB::table('logs')->insert([
+            'user' => $user,
+            'message' => 'mengubah Data SPP',
+            'created_at' => $currentDateTime,
+            'updated_at' => $currentDateTime,
+        ]);
+
+        return redirect()->route('dataSpp.index', compact('logs'))
         ->with('message', 'Data berhasil diubah!');
     }
 
@@ -87,7 +111,17 @@ class SppController extends Controller
         $spp = Spp::find($id);
         $spp->delete();
 
-        return redirect()->route('dataSpp.index')
+        $currentDateTime = Carbon::now();
+        $user = Auth::user()->nama_petugas;
+
+        $logs = DB::table('logs')->insert([
+            'user' => $user,
+            'message' => 'menghapus Data SPP',
+            'created_at' => $currentDateTime,
+            'updated_at' => $currentDateTime,
+        ]);
+
+        return redirect()->route('dataSpp.index', compact('logs'))
         ->with('message', 'Data berhasil dihapus!');
     }
 }

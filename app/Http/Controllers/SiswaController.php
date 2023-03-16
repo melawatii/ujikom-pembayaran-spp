@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Spp;
 use App\Models\Kelas;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class SiswaController extends Controller
 {
@@ -54,7 +57,17 @@ class SiswaController extends Controller
         $siswa->id_spp = $request->id_spp;
         $siswa->save();
 
-        return redirect()->route('dataSiswa.index')
+        $currentDateTime = Carbon::now();
+        $user = Auth::user()->nama_petugas;
+
+        $logs = DB::table('logs')->insert([
+            'user' => $user,
+            'message' => 'menambahkan Data Siswa',
+            'created_at' => $currentDateTime,
+            'updated_at' => $currentDateTime,
+        ]);
+
+        return redirect()->route('dataSiswa.index', compact('logs'))
         ->with('message', 'Data berhasil ditambahkan!');
     }
 
@@ -102,7 +115,17 @@ class SiswaController extends Controller
         $siswa->id_spp = $request->id_spp;
         $siswa->save();
 
-        return redirect()->route('dataSiswa.index')
+        $currentDateTime = Carbon::now();
+        $user = Auth::user()->nama_petugas;
+
+        $logs = DB::table('logs')->insert([
+            'user' => $user,
+            'message' => 'mengubah Data Siswa',
+            'created_at' => $currentDateTime,
+            'updated_at' => $currentDateTime,
+        ]);
+
+        return redirect()->route('dataSiswa.index', compact('logs'))
         ->with('message', 'Data berhasil ditambahkan!');
     }
 
@@ -114,7 +137,17 @@ class SiswaController extends Controller
         $siswa = Siswa::find($id);
         $siswa->delete();
 
-        return redirect()->route('dataSiswa.index')
+        $currentDateTime = Carbon::now();
+        $user = Auth::user()->nama_petugas;
+
+        $logs = DB::table('logs')->insert([
+            'user' => $user,
+            'message' => 'menghapus Data Siswa',
+            'created_at' => $currentDateTime,
+            'updated_at' => $currentDateTime,
+        ]);
+
+        return redirect()->route('dataSiswa.index', compact('logs'))
         ->with('message', 'Data berhasil dihapus!');
     }
 }

@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Kelas;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class KelasController extends Controller
 {
@@ -39,7 +43,17 @@ class KelasController extends Controller
         $kelas->kompetensi_keahlian = $request->kompetensi_keahlian;
         $kelas->save();
 
-        return redirect()->route('dataKelas.index')
+        $currentDateTime = Carbon::now();
+        $user = Auth::user()->nama_petugas;
+
+        $logs = DB::table('logs')->insert([
+            'user' => $user,
+            'message' => 'menambahkan Data Kelas',
+            'created_at' => $currentDateTime,
+            'updated_at' => $currentDateTime,
+        ]);
+
+        return redirect()->route('dataKelas.index', compact('logs'))
         ->with('message', 'Data berhasil ditambahkan!');
     }
 
@@ -75,7 +89,17 @@ class KelasController extends Controller
         $kelas->kompetensi_keahlian = $request->kompetensi_keahlian;
         $kelas->save();
 
-        return redirect()->route('dataKelas.index')
+        $currentDateTime = Carbon::now();
+        $user = Auth::user()->nama_petugas;
+
+        $logs = DB::table('logs')->insert([
+            'user' => $user,
+            'message' => 'mengubah Data Kelas',
+            'created_at' => $currentDateTime,
+            'updated_at' => $currentDateTime,
+        ]);
+
+        return redirect()->route('dataKelas.index', compact('logs'))
         ->with('message', 'Data berhasil diubah!');
     }
 
@@ -87,7 +111,17 @@ class KelasController extends Controller
         $kelas = Kelas::find($id);
         $kelas->delete();
 
-        return redirect()->route('dataKelas.index')
+        $currentDateTime = Carbon::now();
+        $user = Auth::user()->nama_petugas;
+
+        $logs = DB::table('logs')->insert([
+            'user' => $user,
+            'message' => 'menghapus Data Kelas',
+            'created_at' => $currentDateTime,
+            'updated_at' => $currentDateTime,
+        ]);
+
+        return redirect()->route('dataKelas.index', compact('logs'))
         ->with('message', 'Data berhasil dihapus!');
     }
 }

@@ -22,19 +22,19 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">NISN</label>
-                                        <input class="form-control" type="number" name="nisn" value="Masukkan nisn ...">
+                                        <input class="form-control" type="number" name="nisn" placeholder="Masukkan nisn ...">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">NIS</label>
-                                        <input class="form-control" type="number" name="nis" value="Masukkan nis ...">
+                                        <input class="form-control" type="number" name="nis" placeholder="Masukkan nis ...">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Nama</label>
-                                        <input class="form-control" type="text" name="nama" value="Masukkan nama ...">
+                                        <input class="form-control" type="text" name="nama" placeholder="Masukkan nama ...">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -50,13 +50,13 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Alamat</label>
-                                        <textarea class="form-control" type="text" name="alamat" value="Masukkan alamat ..."></textarea>
+                                        <textarea class="form-control" type="text" name="alamat" placeholder="Masukkan alamat ..."></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">No Telp</label>
-                                        <input class="form-control" type="number" name="no_telp" value="Masukkan no telp ...">
+                                        <input class="form-control" type="number" name="no_telp" placeholder="Masukkan no telp ...">
                                     </div>
                                 </div>
                                 <div class="col-md-12">

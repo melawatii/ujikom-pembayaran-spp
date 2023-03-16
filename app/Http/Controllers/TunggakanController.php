@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Spp;
 use App\Models\User;
 use App\Models\Siswa;
 use App\Models\Tunggakan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class TunggakanController extends Controller
 {
@@ -60,7 +63,17 @@ class TunggakanController extends Controller
 
         $tunggakan->save();
 
-        return redirect()->route('dataTunggakan.index')
+        $currentDateTime = Carbon::now();
+        $user = Auth::user()->nama_petugas;
+
+        $logs = DB::table('logs')->insert([
+            'user' => $user,
+            'message' => 'menambahkan Data Tunggakan',
+            'created_at' => $currentDateTime,
+            'updated_at' => $currentDateTime,
+        ]);
+
+        return redirect()->route('dataTunggakan.index', compact('logs'))
         ->with('message', 'Data berhasil ditambahkan!');
     }
 
@@ -113,7 +126,17 @@ class TunggakanController extends Controller
 
         $tunggakan->save();
 
-        return redirect()->route('dataTunggakan.index')
+        $currentDateTime = Carbon::now();
+        $user = Auth::user()->nama_petugas;
+
+        $logs = DB::table('logs')->insert([
+            'user' => $user,
+            'message' => 'mengubah Data Tunggakan',
+            'created_at' => $currentDateTime,
+            'updated_at' => $currentDateTime,
+        ]);
+
+        return redirect()->route('dataTunggakan.index', compact('logs'))
         ->with('message', 'Data berhasil diubah!');
     }
 
@@ -125,7 +148,17 @@ class TunggakanController extends Controller
         $tunggakan = Tunggakan::find($id);
         $tunggakan->delete();
 
-        return redirect()->route('dataTunggakan.index')
+        $currentDateTime = Carbon::now();
+        $user = Auth::user()->nama_petugas;
+
+        $logs = DB::table('logs')->insert([
+            'user' => $user,
+            'message' => 'menghapus Data Tunggakan',
+            'created_at' => $currentDateTime,
+            'updated_at' => $currentDateTime,
+        ]);
+
+        return redirect()->route('dataTunggakan.index', compact('logs'))
         ->with('message', 'Data berhasil dihapus!');
     }
 }

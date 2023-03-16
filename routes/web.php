@@ -47,6 +47,7 @@ Route::middleware('login')->group(function () {
     Route::resource('dataPembayaran', PembayaranController::class)->middleware(('admin'));
     Route::resource('dataTunggakan', TunggakanController::class)->middleware(('admin'));
     Route::get('/dataHistory', [PembayaranController::class, 'history'])->middleware(('admin'));
+    Route::get('/logs', [PetugasController::class, 'logs'])->middleware(('admin'));
 
     Route::get('/generateLaporan', function () {
         $history = Pembayaran::all();

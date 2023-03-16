@@ -22,19 +22,19 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Username</label>
-                                        <input class="form-control" type="text" name="username" value="Masukkan username ...">
+                                        <input class="form-control" type="text" name="username" placeholder="Masukkan username ...">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Password</label>
-                                        <input class="form-control" type="password" name="password" value="Masukkan password ...">
+                                        <input class="form-control" type="password" name="password" placeholder="Masukkan password ...">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Nama Petugas</label>
-                                        <input class="form-control" type="text" name="nama_petugas" value="Masukkan nama petugas ...">
+                                        <input class="form-control" type="text" name="nama_petugas" placeholder="Masukkan nama petugas ...">
                                     </div>
                                 </div>
                                 <div class="col-md-12">

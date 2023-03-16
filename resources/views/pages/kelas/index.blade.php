@@ -39,7 +39,7 @@
                                 <tbody>
                                     @foreach($kelas as $row)
                                         <tr>
-                                            <td class="text-xs font-weight-bolder opacity-7" align="center">
+                                            <td class="text-xs font-weight-bolder opacity-7">
                                                 {{ $loop->iteration }}
                                             </td>
                                             <td class="text-xs font-weight-bolder opacity-7">
